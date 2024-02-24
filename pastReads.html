@@ -42,19 +42,40 @@ height:auto;
 </header>
 
 <div class="w3-row-padding w3-center w3-margin-top">
-<div class="w3-card w3-container">
+<div class="w3-card w3-container w3-half">
 	<h3>What We're Read in Past Months</h3>
 	<div id="literal-widget" handle="dogfriendbookclub" status="FINISHED" layout="list"></div>
 <script src="https://literal.club/js/widget.js"></script>
     </div>
-    
-    
 
+<h2 class="w3-center">Photos</h2>
+<div class="w3-content w3-container w3-half" style="max-width:800px;position:relative">
+
+<img class="mySlides w3-animate-opacity" src="/w3images/snow.jpg" style="width:100%">
+<img class="mySlides w3-animate-opacity" src="/w3images/lights.jpg" style="width:100%">
+<img class="mySlides w3-animate-opacity" src="/w3images/mountains.jpg" style="width:100%">
+<img class="mySlides w3-animate-opacity" src="/w3images/forest.jpg" style="width:100%">
+
+<a class="w3-button w3-hover-dark-grey" style="position:absolute;top:45%;left:0;" onclick="plusDivs(-1)">❮</a>
+<a class="w3-button w3-hover-dark-grey" style="position:absolute;top:45%;right:0;" onclick="plusDivs(+1)">❯</a>
+</div>
  <br><br> 
  
 <!-- Footer -->
 <footer class="w3-container w3-theme-dark w3-padding-16">
   <h3>Footer</h3>
+  <div style="position:relative;bottom:55px;" class="w3-tooltip w3-right">
+    <span class="w3-text w3-theme-light w3-padding">Go To Top</span>    
+    <a class="w3-text-white" href="#myHeader"><span class="w3-xlarge">
+    <i class="fa fa-chevron-circle-up"></i></span></a>
+  </div>
+</footer>    
+    
+
+ <br><br> 
+ 
+<!-- Footer -->
+<footer class="w3-container w3-teal w3-padding-16">
   <div style="position:relative;bottom:55px;" class="w3-tooltip w3-right">
     <span class="w3-text w3-theme-light w3-padding">Go To Top</span>    
     <a class="w3-text-white" href="#myHeader"><span class="w3-xlarge">
@@ -75,6 +96,26 @@ function w3_open() {
 function w3_close() {
   document.getElementById("mySidebar").style.display = "none";
 }
+
+// Slideshows
+var slideIndex = 1;
+
+function plusDivs(n) {
+  slideIndex = slideIndex + n;
+  showDivs(slideIndex);
+}
+
+function showDivs(n) {
+  var x = document.getElementsByClassName("mySlides");
+  if (n > x.length) {slideIndex = 1}    
+  if (n < 1) {slideIndex = x.length} ;
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";  
+  }
+  x[slideIndex-1].style.display = "block";  
+}
+
+showDivs(1);
 
 </script>
 

@@ -43,7 +43,7 @@ height:auto;
 
 <div class="w3-row-padding w3-center w3-margin-top">
 <div class="w3-card w3-container">
-	<h3>Next meeting on Sunday March 3rd</h3>
+	<h3>Current Month Book Club Info</h3>
     </div>
     
     
@@ -69,6 +69,8 @@ height:auto;
 <div class="w3-third">
   <div class="w3-card w3-container" style="min-height:460px">
   <h3>Add to Calendar</h3><br>
+  <p>March Meeting on</p>
+  <p>Sunday, March 3 at 3PM</p>
   <!-- Button code -->
 <div title="Add to Calendar" class="addeventatc">
 	Add to Calendar
@@ -78,14 +80,13 @@ height:auto;
     <span class="description">Discussing Yellowface by RF Kuang</span>
     <span class="location">In Vino Veritas in Shoreview</span>
 </div>
-  <p>Paper like design</p>
-  </div>
+
 </div>
 </div>
 
 
 <h2 class="w3-center">Slideshows</h2>
-<div class="w3-content w3-card-4" style="max-width:800px;position:relative">
+<div class="w3-content" style="max-width:800px;position:relative">
 
 <img class="mySlides w3-animate-opacity" src="/w3images/snow.jpg" style="width:100%">
 <img class="mySlides w3-animate-opacity" src="/w3images/lights.jpg" style="width:100%">
@@ -98,8 +99,7 @@ height:auto;
  <br><br> 
  
 <!-- Footer -->
-<footer class="w3-container w3-theme-dark w3-padding-16">
-  <h3>Footer</h3>
+<footer class="w3-container w3-teal w3-padding-16">
   <div style="position:relative;bottom:55px;" class="w3-tooltip w3-right">
     <span class="w3-text w3-theme-light w3-padding">Go To Top</span>    
     <a class="w3-text-white" href="#myHeader"><span class="w3-xlarge">
@@ -121,25 +121,7 @@ function w3_close() {
   document.getElementById("mySidebar").style.display = "none";
 }
 
-// Slideshows
-var slideIndex = 1;
 
-function plusDivs(n) {
-  slideIndex = slideIndex + n;
-  showDivs(slideIndex);
-}
-
-function showDivs(n) {
-  var x = document.getElementsByClassName("mySlides");
-  if (n > x.length) {slideIndex = 1}    
-  if (n < 1) {slideIndex = x.length} ;
-  for (i = 0; i < x.length; i++) {
-    x[i].style.display = "none";  
-  }
-  x[slideIndex-1].style.display = "block";  
-}
-
-showDivs(1);
 
 </script>
 

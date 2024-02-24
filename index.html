@@ -1,125 +1,146 @@
 <!DOCTYPE html>
 <html>
 <head>
-
-<!-- AddEvent script -->
-<script type="text/javascript" src="https://cdn.addevent.com/libs/atc/1.6.1/atc.min.js" async defer></script>
-
+<title>Dog Friend Book Club</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css">
 </head>
 <body>
 
-<!-- The sidebar -->
-<div class="sidebar">
-  <a class="active" href="index.html">Home</a>
-  <a href="vote.html">Vote</a>
-  <a href="suggest.html">Suggest</a>
-      <a href="results.html">Results</a>
+<style>
+.wrapper {
+display:flex;
+justify-content:center;
+resize:both;
+width:auto;
+height:auto;
+}
+</style>
 
-  <a href="pastReads.html">Past Months</a>  
+<!-- Side Navigation -->
+<nav class="w3-sidebar w3-bar-block w3-card w3-animate-left w3-center" style="display:none" id="mySidebar">
+  <h1 class="w3-xxxlarge w3-text-theme">Menu</h1>
+  <button class="w3-bar-item w3-button" onclick="w3_close()">Back <i class="fa fa-remove"></i></button>
+  <a href="#" class="w3-bar-item w3-button">Home</a>
+  <a href="#" class="w3-bar-item w3-button">Vote</a>
+  <a href="#" class="w3-bar-item w3-button">Suggest</a>
+  <a href="#" class="w3-bar-item w3-button">Past Months</a>
+</nav>
+
+<!-- Header -->
+<header class="w3-container w3-teal w3-padding" id="myHeader">
+  <i onclick="w3_open()" class="fa fa-bars w3-xlarge w3-button w3-theme"></i> 
+  <div class="w3-center">
+  <h1 class="w3-xxxlarge w3-animate-bottom">Dog Friend Book Club</h1>
+  </div>
+</header>
+
+<div class="w3-row-padding w3-center w3-margin-top">
+<div class="w3-card w3-container">
+	<h3>Next meeting on Sunday March 3rd</h3>
+    </div>
+    
+    
+<div class="w3-row-padding w3-center w3-margin-top">
+<div class="w3-third">
+  <div class="w3-card w3-container" style="min-height:460px">
+  <h3>Currently Reading</h3><br>
+ 	<div class="wrapper" id="literal-widget" handle="dogfriendbookclub" status="IS_READING" layout="list"></div>
+<script src="https://literal.club/js/widget.js"></script>  
+  </div>
 </div>
 
+<div class="w3-third">
+  <div class="w3-card w3-container" style="min-height:460px">
+  <h3>Meeting Place</h3><br>
+  
+  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2818.7726685474086!2d-93.14860092354218!3d45.04983487107024!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x52b32918da057367%3A0x7707f05c7f4bdecc!2sIn%20Vino%20Veritas!5e0!3m2!1sen!2sus!4v1708435959386!5m2!1sen!2sus" width="80%" height="auto" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+  <p>In Vino Veritas</p>
+  
+  </div>
+</div>
 
-
-<!-- Page content -->
-<div class="content">
-	<style>
-	p { font-family: Arial; }
-	</style>
-  	<img src="dfbfLogo.png" alt="Logo" class="center"/>
-  	<style>
-  	.center {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 30%;
-}
-</style>
-	<style>
-body {
-  font-family: sans-serif;
-}
-a {
-  text-decoration: none;
-}
-</style>
-<h2>What we're currently reading:</h2>
-  <div id="literal-widget" handle="dogfriendbookclub" status="IS_READING" layout="list" style="width:50%"></div>
-<script src="https://literal.club/js/widget.js"></script>
-	<h2>March meeting will be at In Vino Veritas on Sunday 3/3 at 3pm!</h2>
-	<!-- Button code -->
+<div class="w3-third">
+  <div class="w3-card w3-container" style="min-height:460px">
+  <h3>Add to Calendar</h3><br>
+  <!-- Button code -->
 <div title="Add to Calendar" class="addeventatc">
-    Add to Calendar
     <span class="start">03/03/2024 3:00 PM</span>
     <span class="end">03/03/2024 6:00 PM</span>
     <span class="title">Dog Friend Book Club March Meeting</span>
     <span class="description">Discussing Yellowface by RF Kuang</span>
     <span class="location">In Vino Veritas in Shoreview</span>
 </div>
-	<p> </p>
-<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2818.7726685474086!2d-93.14860092354218!3d45.04983487107024!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x52b32918da057367%3A0x7707f05c7f4bdecc!2sIn%20Vino%20Veritas!5e0!3m2!1sen!2sus!4v1708435959386!5m2!1sen!2sus" width="300" height="225" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+  <p>Paper like design</p>
+  </div>
 </div>
-<style>
-/* The side navigation menu */
-.sidebar {
-  margin: 0;
-  padding: 0;
-  width: 15%;
-  background-color: #f1f1f1;
-  position: fixed;
-  height: 100%;
-  overflow: auto;
+</div>
+
+
+<h2 class="w3-center">Slideshows</h2>
+<div class="w3-content w3-card-4" style="max-width:800px;position:relative">
+
+<img class="mySlides w3-animate-opacity" src="/w3images/snow.jpg" style="width:100%">
+<img class="mySlides w3-animate-opacity" src="/w3images/lights.jpg" style="width:100%">
+<img class="mySlides w3-animate-opacity" src="/w3images/mountains.jpg" style="width:100%">
+<img class="mySlides w3-animate-opacity" src="/w3images/forest.jpg" style="width:100%">
+
+<a class="w3-button w3-hover-dark-grey" style="position:absolute;top:45%;left:0;" onclick="plusDivs(-1)">❮</a>
+<a class="w3-button w3-hover-dark-grey" style="position:absolute;top:45%;right:0;" onclick="plusDivs(+1)">❯</a>
+</div>
+ <br><br> 
+ 
+<!-- Footer -->
+<footer class="w3-container w3-theme-dark w3-padding-16">
+  <h3>Footer</h3>
+  <div style="position:relative;bottom:55px;" class="w3-tooltip w3-right">
+    <span class="w3-text w3-theme-light w3-padding">Go To Top</span>    
+    <a class="w3-text-white" href="#myHeader"><span class="w3-xlarge">
+    <i class="fa fa-chevron-circle-up"></i></span></a>
+  </div>
+</footer>
+
+<!-- Script for Sidebar, Tabs, Accordions, Progress bars and slideshows -->
+<script>
+// Side navigation
+function w3_open() {
+  var x = document.getElementById("mySidebar");
+  x.style.width = "100%";
+  x.style.fontSize = "40px";
+  x.style.paddingTop = "10%";
+  x.style.display = "block";
+}
+function w3_close() {
+  document.getElementById("mySidebar").style.display = "none";
 }
 
-/* Sidebar links */
-.sidebar a {
-  display: block;
-  color: black;
-  padding: 16px;
-  text-decoration: none;
+// Slideshows
+var slideIndex = 1;
+
+function plusDivs(n) {
+  slideIndex = slideIndex + n;
+  showDivs(slideIndex);
 }
 
-.sidebar a {
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-/* Active/current link */
-.sidebar a.active {
-  background-color: #2cc87e;
-  color: white;
-}
-
-/* Links on mouse-over */
-.sidebar a:hover:not(.active) {
-  background-color: #555;
-  color: white;
-}
-
-/* Page content. The value of the margin-left property should match the value of the sidebar's width property */
-div.content {
-  margin-left: 15%;
-  padding: 1px 16px;
-  height: 100%;
-}
-
-/* On screens that are less than 700px wide, make the sidebar into a topbar */
-@media screen and (max-width: 700px) {
-  .sidebar {
-    width: 100%;
-    height: auto;
-    position: sticky;
+function showDivs(n) {
+  var x = document.getElementsByClassName("mySlides");
+  if (n > x.length) {slideIndex = 1}    
+  if (n < 1) {slideIndex = x.length} ;
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";  
   }
-  .sidebar a {float: left;}
-  div.content {margin-left: 0;}
+  x[slideIndex-1].style.display = "block";  
 }
 
-/* On screens that are less than 400px, display the bar vertically, instead of horizontally */
-/*@media screen and (max-width: 400px) {
-  .sidebar a {
-    text-align: center;
-    float: none;
-  } 
-}*/
-</style>
+showDivs(1);
+
+</script>
+
+
 
 </body>
 </html>
+

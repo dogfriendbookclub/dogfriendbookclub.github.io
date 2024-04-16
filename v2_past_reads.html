@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-<!-- AddEvent script -->
-<script type="text/javascript" src="https://cdn.addevent.com/libs/atc/1.6.1/atc.min.js" async defer></script>
 
 <title>Dog Friend Book Club</title>
 <meta charset="UTF-8">
@@ -45,38 +43,75 @@ height:auto;
 </header>
 
 <div class="w3-row-padding w3-center w3-margin-top">
-<div class="w3-half">
+
+<div class="w3-row-padding w3-center w3-margin-top">
 <div class="w3-card w3-container">
-	<h3>What We're Read in Past Months</h3>
-	<br>
-	<div id="literal-widget" handle="dogfriend_bookclub" status="FINISHED" layout="list"></div>
-<script src="https://literal.club/js/widget.js"></script>
+	<h3>Testing Testing</h3>
     </div>
- </div>   
+	</div>
+    
+    
+<div class="w3-row-padding w3-center w3-margin-top">
+<div class="w3-third">
+  <div class="w3-card w3-container" style="min-height:460px">
+  <h3>Currently Reading</h3><br>
+ 	
+</div>
+</div>
 
-<div class="w3-half">
-<div class="w3-card w3-container" style="max-width:1200px;position:relative" style="min-height:460px">
-	<h3>Photos</h3>
-<img class="mySlides w3-animate-opacity" src="IMG_5021.JPG" style="width:100%">
-<img class="mySlides w3-animate-opacity" src="IMG_5022.JPG" style="width:100%">
-<img class="mySlides w3-animate-opacity" src="IMG_5023.JPG" style="width:100%">
-<img class="mySlides w3-animate-opacity" src="IMG_5024.JPG" style="width:100%">
-<img class="mySlides w3-animate-opacity" src="IMG_5025.JPG" style="width:100%">
-<img class="mySlides w3-animate-opacity" src="IMG_5026.JPG" style="width:100%">
+<div class="w3-third">
+  <div class="w3-card w3-container" style="min-height:460px">
+  <h3>Meeting Place</h3>
+  
+  </div>
+</div>
 
-
-
-<a class="w3-button w3-hover-dark-grey" style="position:absolute;top:45%;left:0;" onclick="plusDivs(-1)">❮</a>
-<a class="w3-button w3-hover-dark-grey" style="position:absolute;top:45%;right:0;" onclick="plusDivs(+1)">❯</a>
-<br>
+<div class="w3-third">
+  <div class="w3-card w3-container" style="min-height:460px">
+  <h3>Add to Calendar</h3><br>
+  
 </div>
 </div>
 
 </div>
-<br>
+
+<?php
+$url = 'https://literal.club/graphql/';
+$query = 'query GetBookByIsbn($isbn13: String!) {
+  	book(where: {isbn13: $isbn13}) {
+    	id
+    	title
+    	subtitle
+    	pageCount
+    	authors {
+       		name
+    	}
+  }
+}
+    }';
+
+$data = array('query' => $query);
+$options = [
+    'http' => [
+        'method' => 'POST',
+        'header' => [
+            "Content-Type: application/json",
+            "Authorization: Bearer YOUR_ACCESS_TOKEN" 
+        ],
+        'content' => json_encode($data),
+    ],
+];
+
+$context = stream_context_create($options);
+$response = file_get_contents($url, false, $context);
+
+echo $response;
+
+?>
+
 
 <!-- Footer -->
-<footer class="w3-container w3-teal w3-padding-16 w3-center">
+<footer class="w3-container w3-teal w3-center w3-padding-16">
     <p>dogfriendbookclub.github.io</p>
 </footer>
 
@@ -94,30 +129,8 @@ function w3_close() {
   document.getElementById("mySidebar").style.display = "none";
 }
 
-// Slideshows
-var slideIndex = 1;
-
-function plusDivs(n) {
-  slideIndex = slideIndex + n;
-  showDivs(slideIndex);
-}
-
-function showDivs(n) {
-  var x = document.getElementsByClassName("mySlides");
-  if (n > x.length) {slideIndex = 1}    
-  if (n < 1) {slideIndex = x.length} ;
-  for (i = 0; i < x.length; i++) {
-    x[i].style.display = "none";  
-  }
-  x[slideIndex-1].style.display = "block";  
-}
-
-showDivs(1);
-
 </script>
-
 
 
 </body>
 </html>
-

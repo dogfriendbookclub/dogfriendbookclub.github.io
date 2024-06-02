@@ -4,17 +4,27 @@
 
 <h2>Create Object from JSON String</h2>
 
-<p id="demo"></p>
-
 <script>
-let text = '{"employees":[' +
-'{"firstName":"John","lastName":"Doe" },' +
-'{"firstName":"Anna","lastName":"Smith" },' +
-'{"firstName":"Peter","lastName":"Jones" }]}';
+const data = '{
+    "query": "query GetBookByIsbn($isbn13: String!) {\n  book(where: {isbn13: $isbn13}) {\n    id\n    title\n    subtitle\n    pageCount\n    authors {\n        name\n    }\n  }\n}\n",
+    "variables": {
+        "isbn13": "9780593321201"
+    }
+}';
 
-const obj = JSON.parse(text);
-document.getElementById("demo").innerHTML =
-obj.employees[1].firstName + " " + obj.employees[1].lastName;
+const xhr = new XMLHttpRequest();
+xhr.withCredentials = true;
+
+xhr.addEventListener('readystatechange', function () {
+    if (this.readyState === this.DONE) {
+        console.log(this.responseText);
+    }
+});
+
+xhr.open('POST', 'https://literal.club/graphql/');
+xhr.setRequestHeader('content-type', 'application/json');
+
+xhr.send(data);
 </script>
 
 </body>

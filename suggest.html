@@ -46,7 +46,7 @@ height:auto;
 </header>
 
 <div class="w3-row-padding w3-center w3-margin-top">
-<div class="w3-half">
+<div class="w3-third">
   <div class="w3-card w3-container" style="min-height:460px">
   <h3>Current Suggestions</h3><br>
  	<div id="literal-widget" handle="dogfriend_bookclub" status="WANTS_TO_READ" layout="list"></div>
@@ -54,9 +54,41 @@ height:auto;
   </div>
 </div>
 
-<div class="w3-half">
+<div class="w3-third">
   <div class="w3-card w3-container" style="min-height:460px">
-  <h3></h3><br>
+  <h3>Add Book to Suggestion List</h3><br>
+  
+  <input type="text" id="text-input" placeholder="Search by ISBN13" />
+  <button id="send-button">Find</button>
+  <br><br>
+
+  <div class="book-container" id="book-container" style="display: none;">
+    <div class="book-cover">
+      <img id="book-cover-img" alt="Book Cover" style="max-height:200px">
+    </div>
+    <div class="book-title" id="book-title"></div>
+    <div class="book-subtitle" id="book-subtitle"></div>
+    <div class="book-authors" id="book-authors"></div>
+    <div class="book-page-count" id="book-page-count"></div>
+    <div class="book-published-date" id="book-published-date"></div>
+    <div class="book-description" id="book-description"></div>
+  </div>
+
+  <button id="confirm-button" style="display: none;">Confirm</button>
+  <button id="cancel-button" style="display: none;">Cancel</button>
+  <div id="confirmation-message" style="display: none;">Your book has been added to the suggestion list!</div>
+  <div id="cancel-message" style="display: none;">Your book was not added to the list.</div>
+  
+  <script src="addByISBN.js"></script>
+  <br>
+  <br>
+  
+  </div>
+  </div>
+
+<div class="w3-third">
+  <div class="w3-card w3-container" style="min-height:460px">
+  <h3>Suggestion Box</h3><br>
   
   <script type="text/javascript" src="https://form.jotform.com/jsform/240497910919062"></script>
   <br>

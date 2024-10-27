@@ -24,6 +24,7 @@ const inputElement = document.getElementById('text-input');
           'Content-Type': 'application/json',
           'Accept': 'application/json',
           'Authorization': 'Bearer process.env.LITERAL_KEY',
+
         },
         body: JSON.stringify({
           query: `query GetBookByIsbn($isbn13: String!) {

@@ -51,7 +51,7 @@ fetch("https://literal.club/graphql/", {
       const newDiv = document.createElement("div");
       newDiv.id = "book" + i;
       newDiv.className = "w3-card w3-container";
-      newDiv.style = "min-height: 460px; margin: 10px; padding: 20px;";
+      newDiv.style = "min-height: 460px; min-width: 315px; margin: 10px; padding: 20px;";
 
       // Create and populate elements for each book detail
       const title = document.createElement("h3");

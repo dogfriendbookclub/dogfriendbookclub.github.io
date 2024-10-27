@@ -1,65 +1,68 @@
 <!DOCTYPE html>
 <html>
-<head>
-<!-- AddEvent script -->
-<script type="text/javascript" src="https://cdn.addevent.com/libs/atc/1.6.1/atc.min.js" async defer></script>
 
-<title>Dog Friend Book Club</title>
-  <link rel="icon" type="image/x-icon" href="favicon.png?">
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css">
+<head>
+    <!-- AddEvent script -->
+    <script type="text/javascript" src="https://cdn.addevent.com/libs/atc/1.6.1/atc.min.js" async defer></script>
+
+    <title>Dog Friend Book Club</title>
+    <link rel="icon" type="image/x-icon" href="favicon.png?">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css">
 </head>
+
 <body>
 
-<style>
-.wrapper {
-display:flex;
-justify-content:center;
-resize:both;
-width:auto;
-height:auto;
-}
-</style>
+    <style>
+        .wrapper {
+        display:flex;
+        justify-content:center;
+        resize:both;
+        width:auto;
+        height:auto;
+        }
+    </style>
 
-<!-- Side Navigation -->
-<nav class="w3-sidebar w3-bar-block w3-card w3-animate-left w3-center" style="display:none" id="mySidebar">
-  <h1 class="w3-xxxlarge w3-text-theme">Menu</h1>
-  <button class="w3-bar-item w3-button" onclick="w3_close()">Back <i class="fa fa-remove"></i></button>
-  <a href="index.html" class="w3-bar-item w3-button">Home</a>
-  <a href="vote.html" class="w3-bar-item w3-button">Vote</a>
-  <a href="results.html" class="w3-bar-item w3-button">Results</a>
-  <a href="suggest.html" class="w3-bar-item w3-button">Suggest</a>
-  <a href="pastReads.html" class="w3-bar-item w3-button">Past Months</a>
-  <a href="allSuggestions.html" class="w3-bar-item w3-button">All Suggestions</a>
+    <!-- Side Navigation -->
+    <nav class="w3-sidebar w3-bar-block w3-card w3-animate-left w3-center" style="display:none" id="mySidebar">
+        <h1 class="w3-xxxlarge w3-text-theme">Menu</h1>
+        <button class="w3-bar-item w3-button" onclick="w3_close()">Back <i class="fa fa-remove"></i></button>
+        <a href="index.html" class="w3-bar-item w3-button">Home</a>
+        <a href="vote.html" class="w3-bar-item w3-button">Vote</a>
+        <a href="results.html" class="w3-bar-item w3-button">Results</a>
+        <a href="suggest.html" class="w3-bar-item w3-button">Suggest</a>
+        <a href="pastReads.html" class="w3-bar-item w3-button">Past Months</a>
+        <a href="allSuggestions.html" class="w3-bar-item w3-button">All Suggestions</a>
 
-</nav>
+    </nav>
 
-<!-- Header -->
-<header class="w3-container w3-teal w3-padding" id="myHeader">
-  <i onclick="w3_open()" class="fa fa-bars w3-xlarge w3-button w3-theme"></i> 
-  <div class="w3-center">
-  <h1 class="w3-xxlarge w3-animate-bottom">Dog Friend Book Club</h1>
-  </div>
-</header>
+    <!-- Header -->
+    <header class="w3-container w3-teal w3-padding" id="myHeader">
+        <i onclick="w3_open()" class="fa fa-bars w3-xlarge w3-button w3-theme"></i>
+        <div class="w3-center">
+            <h1 class="w3-xxlarge w3-animate-bottom">Dog Friend Book Club</h1>
+        </div>
+    </header>
 
-<div class="w3-row-padding w3-center w3-margin-top">
-<div class="w3-card w3-container">
-	<h3>Current Month Book Club Info</h3>
+    <div class="w3-row-padding w3-center w3-margin-top">
+        <div class="w3-card w3-container">
+            <h3>Current Month Book Club Info</h3>
+        </div>
     </div>
-	</div>
-    
-    
-<div class="w3-row-padding w3-center w3-margin-top">
-<div class="w3-third">
-  <div class="w3-card w3-container" style="min-height:460px">
-  <h3>Currently Reading</h3><br>
- 	<div class="wrapper" id="literal-widget" handle="dogfriend_bookclub" status="IS_READING" layout="list"></div>
-<script src="https://literal.club/js/widget.js"></script>  
 
-  <!-- <div class="w3-padding-16">
+
+    <div class="w3-row-padding w3-center w3-margin-top">
+        <div class="w3-third">
+            <div class="w3-card w3-container" style="min-height:460px">
+                <h3>Currently Reading</h3>
+                <br>
+                <div class="wrapper" id="literal-widget" handle="dogfriend_bookclub" status="IS_READING" layout="list"></div>
+                <script src="https://literal.club/js/widget.js"></script>
+
+                <!-- <div class="w3-padding-16">
       <a href="https://www.moonpalacebooks.com/item/UPeceejxZgdJtKstBXRdqQ" class="w3-button w3-teal" target="_blank">Buy Independent</a></p>
     </div>
     <div class="w3-padding-16">
@@ -69,62 +72,70 @@ height:auto;
     <div class="w3-padding-16">
       <a href="https://open.spotify.com/show/0V6j5L0DV2GmtREQFw9FyG" class="w3-button w3-teal" target="_blank">Audiobook</a></p>
     </div> -->
-</div>
-</div>
+            </div>
+        </div>
 
-<div class="w3-third">
-  <div class="w3-card w3-container" style="min-height:460px">
-  <h3>Meeting Place</h3>
-  
-    <p>At Bryn's House</p>
-    <p></p>
-<!-- <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d11296.489864923948!2d-93.1080336!3d44.9411783!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x87f62b3c3e2fdf2d%3A0xf16452e949c03cbf!2sHope%20Breakfast%20Bar%20-%20St.%20Paul!5e0!3m2!1sen!2sus!4v1726421818311!5m2!1sen!2sus" width="80%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> -->
-  
-  <br><p>We'll be meeting at Bryn's house in Crystal. Keep an eye on the group chat for the address.<p>
-  
-  </div>
-</div>
+        <div class="w3-third">
+            <div class="w3-card w3-container" style="min-height:460px">
+                <h3>Meeting Place</h3>
 
-<div class="w3-third">
-  <div class="w3-card w3-container" style="min-height:460px">
-  <h3>Add to Calendar</h3><br>
-  <p>November Meeting</p>
-  <p>Sunday November 3rd, 1PM<p><br>
- 
+                <p>At Bryn's House</p>
+                <p></p>
+                <!-- <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d11296.489864923948!2d-93.1080336!3d44.9411783!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x87f62b3c3e2fdf2d%3A0xf16452e949c03cbf!2sHope%20Breakfast%20Bar%20-%20St.%20Paul!5e0!3m2!1sen!2sus!4v1726421818311!5m2!1sen!2sus" width="80%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> -->
 
-<a title="Add to Calendar" class="addeventatc" data-id="np23534691" href="https://www.addevent.com/event/np23534691" target="_blank">Add to Calendar</a> <script type="text/javascript" src="https://cdn.addevent.com/libs/atc/1.6.1/atc.min.js" async defer></script>
-<br><br>
-<a title="Subscribe to Calendar" class="addeventstc" data-id="TQ671575" href="https://www.addevent.com/calendar/TQ671575" target="_blank">Subscribe to Calendar</a> <script type="text/javascript" src="https://cdn.addevent.com/libs/stc/1.0.2/stc.min.js" async defer></script></div>
-</div>
-</div>
-<br>
+                <br>
+                <p>We'll be meeting at Bryn's house in Crystal. Keep an eye on the group chat for the address.
+                    <p>
 
- 
-<!-- Footer -->
-<footer class="w3-container w3-teal w3-center w3-padding-16">
-    <p>dogfriendbookclub.github.io</p>
-</footer>
+            </div>
+        </div>
 
-<!-- Script for Sidebar, Tabs, Accordions, Progress bars and slideshows -->
-<script>
-// Side navigation
-function w3_open() {
-  var x = document.getElementById("mySidebar");
-  x.style.width = "70%";
-  x.style.fontSize = "30px";
-  x.style.paddingTop = "10%";
-  x.style.display = "block";
-}
-function w3_close() {
-  document.getElementById("mySidebar").style.display = "none";
-}
+        <div class="w3-third">
+            <div class="w3-card w3-container" style="min-height:460px">
+                <h3>Add to Calendar</h3>
+                <br>
+                <p>November Meeting</p>
+                <p>Sunday November 3rd, 1PM
+                    <p>
+                        <br>
 
 
+                        <a title="Add to Calendar" class="addeventatc" data-id="np23534691" href="https://www.addevent.com/event/np23534691" target="_blank">Add to Calendar</a>
+                        <script type="text/javascript" src="https://cdn.addevent.com/libs/atc/1.6.1/atc.min.js"
+                        async defer></script>
+                        <br>
+                        <br>
+                        <a title="Subscribe to Calendar" class="addeventstc" data-id="TQ671575" href="https://www.addevent.com/calendar/TQ671575" target="_blank">Subscribe to Calendar</a>
+                        <script type="text/javascript" src="https://cdn.addevent.com/libs/stc/1.0.2/stc.min.js"
+                        async defer></script>
+            </div>
+        </div>
+    </div>
+    <br>
 
-</script>
+
+    <!-- Footer -->
+    <footer class="w3-container w3-teal w3-center w3-padding-16">
+        <p>dogfriendbookclub.github.io</p>
+    </footer>
+
+    <!-- Script for Sidebar, Tabs, Accordions, Progress bars and slideshows -->
+    <script>
+        // Side navigation
+        function w3_open() {
+          var x = document.getElementById("mySidebar");
+          x.style.width = "70%";
+          x.style.fontSize = "30px";
+          x.style.paddingTop = "10%";
+          x.style.display = "block";
+        }
+        function w3_close() {
+          document.getElementById("mySidebar").style.display = "none";
+        }
+    </script>
 
 
 
 </body>
-</html>
 
+</html>

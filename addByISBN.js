@@ -14,7 +14,7 @@ const inputElement = document.getElementById('text-input');
     const cancelMessage = document.getElementById('cancel-message');
 
     let currentBookId = null;
-
+    
     sendButton.addEventListener('click', () => {
       const text = inputElement.value;
 
@@ -23,7 +23,7 @@ const inputElement = document.getElementById('text-input');
         headers: {
           'Content-Type': 'application/json',
           'Accept': 'application/json',
-          'Authorization': 'Bearer process.env.LITERAL_KEY',
+          'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwcm9maWxlSWQiOiJjbHYwNnhtcTkxMjgzMzEwMGh3ZXJsODgydm1kIiwidHlwZSI6IkFDQ0VTU19UT0tFTiIsInRpbWVzdGFtcCI6MTcyOTA0ODA4MDIzMywiaWF0IjoxNzI5MDQ4MDgwLCJleHAiOjE3NDQ3NzI4ODB9.smTM3wtEVgEWwknwMW7i7hf5uO2cawSiK7JtSbDi444',
 
         },
         body: JSON.stringify({
@@ -81,7 +81,7 @@ const inputElement = document.getElementById('text-input');
         headers: {
           'Content-Type': 'application/json',
           'Accept': 'application/json',
-          'Authorization': 'Bearer process.env.LITERAL_KEY',
+          'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwcm9maWxlSWQiOiJjbHYwNnhtcTkxMjgzMzEwMGh3ZXJsODgydm1kIiwidHlwZSI6IkFDQ0VTU19UT0tFTiIsInRpbWVzdGFtcCI6MTcyOTA0ODA4MDIzMywiaWF0IjoxNzI5MDQ4MDgwLCJleHAiOjE3NDQ3NzI4ODB9.smTM3wtEVgEWwknwMW7i7hf5uO2cawSiK7JtSbDi444',
         },
         body: JSON.stringify({
           query: `mutation UpdateReadingState($bookId: String!, $readingStatus: ReadingStatus!) {

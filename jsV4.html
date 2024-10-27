@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book Information Display</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    .book-container {
+      border: 1px solid #ddd;
+      padding: 20px;
+      max-width: 600px;
+    }
+    .book-cover img {
+      max-width: 100%;
+    }
+    .book-title {
+      font-size: 24px;
+      font-weight: bold;
+    }
+    .book-subtitle {
+      font-size: 18px;
+      font-style: italic;
+      margin-bottom: 10px;
+    }
+    .book-description {
+      margin-top: 20px;
+      white-space: pre-line;
+    }
+    .book-authors {
+      font-weight: bold;
+      margin-top: 10px;
+    }
+    #confirm-button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    #confirm-button:hover {
+      background-color: #45a049;
+    }
+    #confirmation-message {
+      margin-top: 20px;
+      font-size: 18px;
+      color: green;
+      display: none;
+    }
+    #cancel-button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    #cancel-button:hover {
+      background-color: #45a049;
+    }
+    #cancel-message {
+      margin-top: 20px;
+      font-size: 18px;
+      color: green;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Add Book by ISBN</h1>
+  <input type="text" id="text-input" placeholder="Search by ISBN13" />
+  <button id="send-button">Find</button>
+
+  <div class="book-container" id="book-container" style="display: none;">
+    <div class="book-cover">
+      <img id="book-cover-img" alt="Book Cover">
+    </div>
+    <div class="book-title" id="book-title"></div>
+    <div class="book-subtitle" id="book-subtitle"></div>
+    <div class="book-authors" id="book-authors"></div>
+    <div class="book-page-count" id="book-page-count"></div>
+    <div class="book-published-date" id="book-published-date"></div>
+    <div class="book-description" id="book-description"></div>
+  </div>
+
+  <button id="confirm-button" style="display: none;">Confirm</button>
+  <button id="cancel-button" style="display: none;">Cancel</button>
+  <div id="confirmation-message">Your book has been added to the suggestion list!</div>
+  <div id="cancel-message">Your book was not added to the list.</div>
+
+  <script src="addByISBN.js"></script>
+
+</body>
+</html>

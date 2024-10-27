@@ -1,32 +1,47 @@
 <!DOCTYPE html>
 <html>
+<head>
+  <title>Text Input and API</title>
+</head>
 <body>
+  <input type="text" id="text-input" placeholder="Enter text" />
+  <button id="send-button">Send</button>
+  <div id="response"></div>
 
-<h2>Create Object from JSON String</h2>
-
-<script>
-const data = '{
-    "query": "query GetBookByIsbn($isbn13: String!) {\n  book(where: {isbn13: $isbn13}) {\n    id\n    title\n    subtitle\n    pageCount\n    authors {\n        name\n    }\n  }\n}\n",
-    "variables": {
-        "isbn13": "9780593321201"
-    }
-}';
-
-const xhr = new XMLHttpRequest();
-xhr.withCredentials = true;
-
-xhr.addEventListener('readystatechange', function () {
-    if (this.readyState === this.DONE) {
-        console.log(this.responseText);
-    }
-});
-
-xhr.open('POST', 'https://literal.club/graphql/');
-xhr.setRequestHeader('content-type', 'application/json');
-
-xhr.send(data);
-</script>
-
+  <script>
+    const inputElement = document.getElementById('text-input');
+    const sendButton = document.getElementById('send-button');
+    const responseElement = document.getElementById('response');
+ 
+    sendButton.addEventListener('click', () => {
+      const text = inputElement.value;
+ 
+      fetch(
+		 'https://literal.club/graphql/',
+		 {
+		  // mode: 'no-cors' 
+		  method: 'POST',
+		  headers: {
+			'Content-Type': 'application/json',
+			'Accept': 'application/json',
+			'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwcm9maWxlSWQiOiJjbHYwNnhtcTkxMjgzMzEwMGh3ZXJsODgydm1kIiwidHlwZSI6IkFDQ0VTU19UT0tFTiIsInRpbWVzdGFtcCI6MTcyOTA0ODA4MDIzMywiaWF0IjoxNzI5MDQ4MDgwLCJleHAiOjE3NDQ3NzI4ODB9.smTM3wtEVgEWwknwMW7i7hf5uO2cawSiK7JtSbDi444',
+		  },
+		  body: JSON.stringify({
+		   query: "query GetBookByIsbn($isbn13: String!) {book(where: {isbn13: $isbn13}) {id, title, subtitle, description, pageCount, publishedDate, cover, authors {name}}}",
+		   variables: { "isbn13":"${text}" }
+		  })
+		 }
+		)
+		.then(r => r.json())
+		.then(data => console.log('data returned:', data))
+      .then(response => response.json())
+      .then(data => {
+        responseElement.textContent = JSON.stringify(data);
+      })
+      .catch(error => {
+        responseElement.textContent = 'Error: ' + error.message;
+      });
+    });
+  </script>
 </body>
 </html>
-

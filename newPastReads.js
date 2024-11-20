@@ -6,39 +6,34 @@ fetch("https://literal.club/graphql/", {
     Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwcm9maWxlSWQiOiJjbHYwNnhtcTkxMjgzMzEwMGh3ZXJsODgydm1kIiwidHlwZSI6IkFDQ0VTU19UT0tFTiIsInRpbWVzdGFtcCI6MTcyOTA0ODA4MDIzMywiaWF0IjoxNzI5MDQ4MDgwLCJleHAiOjE3NDQ3NzI4ODB9.smTM3wtEVgEWwknwMW7i7hf5uO2cawSiK7JtSbDi444", // replace with your actual token
   },
   body: JSON.stringify({
-    query: `query booksByReadingStateAndProfile(
-      $limit: Int!
-      $offset: Int!
-      $readingStatus: ReadingStatus!
-      $profileId: String!
-    ) {
-      booksByReadingStateAndProfile(
-        limit: $limit
-        offset: $offset
-        readingStatus: $readingStatus
-        profileId: $profileId
-      ) {
+    query: `query myReadingStates {
+  myReadingStates {
+    id
+    status
+    profileId
+    createdAt
+    book {
         id
         slug
         title
+        subtitle
         description
+        isbn13
+        pageCount
         cover
         authors {
-          name
+            name
         }
-      }
-    }`,
-    variables: {
-      limit: 100,
-      offset: 0,
-      readingStatus: "DROPPED",
-      profileId: "clv06xmq912833100hwerl882vmd", // replace with your actual profile ID
-    },
+    }
+  }
+}`
   }),
 })
   .then((r) => r.json())
   .then((data) => {
-    const books = data.data.booksByReadingStateAndProfile;
+  	
+  	
+    const books = data.data.myReadingStates;
 
     // Clear the container before adding new books
     const bookContainer = document.getElementById("sel");
@@ -48,40 +43,44 @@ fetch("https://literal.club/graphql/", {
     const toAdd = document.createDocumentFragment();
 
     books.forEach((book, i) => {
+    // if (book.status == "FINISHED") {
       // Create a new div for each book card
       const newDiv = document.createElement("div");
       newDiv.id = "book" + i;
       newDiv.className = "w3-card w3-container";
-      newDiv.style = "min-height: 40px; width: 315px; margin: 10px; padding: 20px;";
+      newDiv.style = "min-height: 400px; width: 315px; margin: 10px; padding: 20px;";
 
       // Create and populate elements for each book detail
       const title = document.createElement("h3");
-      title.textContent = book.title;
+      title.textContent = book.book.title;
       title.className = "book-title";
 
       const authors = document.createElement("p");
-      authors.textContent = `Author: ${book.authors.map(author => author.name).join(", ")}`;
+      authors.textContent = `Author: ${book.book.authors.map(author => author.name).join(", ")}`;
       authors.className = "book-authors";
 
+	  const subtitle = document.createElement("p");
+      subtitle.textContent = book.book.subtitle;
+      subtitle.className = "book-subtitle";
+
       const description = document.createElement("p");
-      description.textContent = book.description;
+      description.textContent = book.book.description;
       description.className = "book-description";
 
       const coverImg = document.createElement("img");
-      coverImg.src = book.cover;
+      coverImg.src = book.book.cover;
       coverImg.alt = `${book.title} cover`;
       coverImg.className = "book-cover";
       coverImg.style = "max-width: 125px; height: auto;";
       coverImg.onclick = function() {
-    	window.location.href = 'https://literal.club/book/' + book.slug;
+    	window.location.href = 'https://literal.club/book/' + book.book.slug;
 		};
-      
 
       // Append all elements to the newDiv (card)
       newDiv.appendChild(coverImg);
       newDiv.appendChild(title);
+      newDiv.appendChild(subtitle);
       newDiv.appendChild(authors);
-      newDiv.appendChild(description);
 
       // Append each card to the document fragment
       toAdd.appendChild(newDiv);

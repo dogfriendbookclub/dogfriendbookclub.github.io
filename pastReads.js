@@ -71,6 +71,9 @@ fetch("https://literal.club/graphql/", {
       coverImg.alt = `${book.title} cover`;
       coverImg.className = "book-cover";
       coverImg.style = "max-width: 125px; height: auto;";
+      coverImg.onclick = function() {
+    	window.location.href = 'https://literal.club/book/' + book.slug;
+		};
 
       // Append all elements to the newDiv (card)
       newDiv.appendChild(coverImg);

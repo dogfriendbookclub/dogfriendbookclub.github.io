@@ -19,8 +19,12 @@ fetch("https://literal.club/graphql/", {
         profileId: $profileId
       ) {
         id
+        slug
         title
+        subtitle
         description
+        isbn13
+        pageCount
         cover
         authors {
           name

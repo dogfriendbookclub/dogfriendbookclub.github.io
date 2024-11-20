@@ -21,6 +21,7 @@ fetch("https://literal.club/graphql/", {
         id
         title
         description
+        isbn13
         cover
         authors {
           name
@@ -64,7 +65,9 @@ fetch("https://literal.club/graphql/", {
       coverImg.className = "book-cover";
       coverImg.style = "max-width: 125px; height: auto;";
       coverImg.onclick = function() {
-    	window.location.href = 'https://literal.club/book/' + book.slug;
+    	// Store the book data in localStorage before redirecting
+        localStorage.setItem('isbn13', book.isbn13);
+        window.location.href = 'bookDetail.html';  // Change to your book details page URL
 		};
 
       nowReadingContainer.appendChild(heading);

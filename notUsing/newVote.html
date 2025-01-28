@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Dog Friend Book Club</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css">
+</head>
+<body>
+
+  <style>
+    /* Basic styling */
+
+    /* General styles for the accordion */
+    .accordion {
+      background-color: #eee;
+      color: #444;
+      cursor: pointer;
+      padding: 18px;
+      width: 100%; /* Full width */
+      margin: 5px; /* Reduce margin between accordion buttons */
+      border: none;
+      text-align: left;
+      outline: none;
+      font-size: 15px;
+      transition: 0.4s;
+      display: block; /* Ensure it behaves as block-level for stacking */
+    }
+
+    .active, .accordion:hover {
+      background-color: #ccc;
+    }
+
+    /* The panel for showing content */
+    .panel {
+      padding: 0 18px;
+      background-color: white;
+      max-height: 0; /* Initially collapsed */
+      width: 100%;
+      overflow: hidden; /* Ensures content is hidden when collapsed */
+      transition: max-height 0.2s ease-out; /* Smooth transition */
+      margin: 0; /* Remove margin between panels */
+      display: none; /* Initially hidden */
+    }
+
+    /* Flex container to control layout of accordions */
+    .container {
+      display: flex; /* Flex layout */
+      flex-direction: column; /* Stack items vertically */
+      gap: 0;  /* Ensure no space between accordion elements */
+    }
+
+	
+    
+  </style>
+
+<body>
+
+<!-- Side Navigation -->
+    <nav class="w3-sidebar w3-bar-block w3-card w3-animate-left w3-center" style="display:none" id="mySidebar">
+        <h1 class="w3-xxxlarge w3-text-theme">Menu</h1>
+        <button class="w3-bar-item w3-button" onclick="w3_close()">Back <i class="fa fa-remove"></i></button>
+        <a href="index.html" class="w3-bar-item w3-button">Home</a>
+        <a href="vote.html" class="w3-bar-item w3-button">Vote</a>
+        <a href="results.html" class="w3-bar-item w3-button">Results</a>
+        <a href="suggest.html" class="w3-bar-item w3-button">Suggest</a>
+        <a href="pastReads.html" class="w3-bar-item w3-button">Past Months</a>
+        <a href="allSuggestions.html" class="w3-bar-item w3-button">All Suggestions</a>
+
+    </nav>
+
+    <!-- Header -->
+    <header class="w3-container w3-teal w3-padding" id="myHeader">
+        <i onclick="w3_open()" class="fa fa-bars w3-xlarge w3-button w3-theme"></i>
+        <div class="w3-center">
+            <h1 class="w3-xxlarge w3-animate-bottom">Dog Friend Book Club</h1>
+        </div>
+    </header>
+
+    <div class="w3-row-padding w3-center w3-margin-top">
+       
+        <div class="w3-half">
+            <div class="w3-card w3-container" style="min-height:460px">
+
+		<div class="container">
+  <div id="sel"></div> <!-- Dynamically generated content will go here -->
+</div>
+		<script src="newVote.js"></script>
+    
+    </div>
+    </div>
+    
+		<div class="w3-half">
+            <div class="w3-card w3-container" style="min-height:460px">
+            <br>
+    
+    </div>
+  </div>
+</div>
+
+<br>
+
+  <script src="bookDetail.js"></script>
+  
+      <!-- Footer -->
+    <footer class="w3-container w3-teal w3-center w3-padding-16">
+        <p>dogfriendbookclub.com</p>
+    </footer>
+
+    <!-- Script for Sidebar, Tabs, Accordions, Progress bars and slideshows -->
+    <script>
+        // Side navigation
+        function w3_open() {
+          var x = document.getElementById("mySidebar");
+          x.style.width = "70%";
+          x.style.fontSize = "30px";
+          x.style.paddingTop = "10%";
+          x.style.display = "block";
+        }
+        function w3_close() {
+          document.getElementById("mySidebar").style.display = "none";
+        }
+    </script>
+  
+</body>
+</html>

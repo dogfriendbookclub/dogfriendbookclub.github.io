@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book Information Display</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    .book-container {
+      border: 1px solid #ddd;
+      padding: 20px;
+      max-width: 600px;
+    }
+    .book-cover img {
+      max-width: 100%;
+    }
+    .book-title {
+      font-size: 24px;
+      font-weight: bold;
+    }
+    .book-subtitle {
+      font-size: 18px;
+      font-style: italic;
+      margin-bottom: 10px;
+    }
+    .book-description {
+      margin-top: 20px;
+      white-space: pre-line;
+    }
+    .book-authors {
+      font-weight: bold;
+      margin-top: 10px;
+    }
+    #confirm-button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    #confirm-button:hover {
+      background-color: #45a049;
+    }
+    #confirmation-message {
+      margin-top: 20px;
+      font-size: 18px;
+      color: green;
+      display: none;
+    
+    }
+    #cancel-button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    #cancel-button:hover {
+      background-color: #45a049;
+    }
+    #cancel-message {
+      margin-top: 20px;
+      font-size: 18px;
+      color: green;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Book Information</h1>
+  <input type="text" id="text-input" placeholder="Enter ISBN13" />
+  <button id="send-button">Send</button>
+
+  <div class="book-container" id="book-container" style="display: none;">
+    <div class="book-cover">
+      <img id="book-cover-img" alt="Book Cover">
+    </div>
+    <div class="book-title" id="book-title"></div>
+    <div class="book-subtitle" id="book-subtitle"></div>
+    <div class="book-authors" id="book-authors"></div>
+    <div class="book-page-count" id="book-page-count"></div>
+    <div class="book-published-date" id="book-published-date"></div>
+    <div class="book-description" id="book-description"></div>
+  </div>
+
+  <button id="confirm-button" style="display: none;">Confirm</button>
+  <button id="cancel-button" style="display: none;">Cancel</button>
+  <div id="confirmation-message">Thank you! The information has been confirmed.</div>
+  <div id="cancel-message">Your book was not added to the list</div>
+
+  <script>
+    const inputElement = document.getElementById('text-input');
+    const sendButton = document.getElementById('send-button');
+    const bookContainer = document.getElementById('book-container');
+    const bookTitle = document.getElementById('book-title');
+    const bookSubtitle = document.getElementById('book-subtitle');
+    const bookAuthors = document.getElementById('book-authors');
+    const bookPageCount = document.getElementById('book-page-count');
+    const bookPublishedDate = document.getElementById('book-published-date');
+    const bookDescription = document.getElementById('book-description');
+    const bookCoverImg = document.getElementById('book-cover-img');
+    const confirmButton = document.getElementById('confirm-button');
+    const confirmationMessage = document.getElementById('confirmation-message');
+    const cancelButton = document.getElementById('cancel-button');
+    const cancelMessage = document.getElementById('cancel-message');
+
+    sendButton.addEventListener('click', () => {
+      const text = inputElement.value;
+
+      fetch('https://literal.club/graphql/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+          'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwcm9maWxlSWQiOiJjbHYwNnhtcTkxMjgzMzEwMGh3ZXJsODgydm1kIiwidHlwZSI6IkFDQ0VTU19UT0tFTiIsInRpbWVzdGFtcCI6MTcyOTA0ODA4MDIzMywiaWF0IjoxNzI5MDQ4MDgwLCJleHAiOjE3NDQ3NzI4ODB9.smTM3wtEVgEWwknwMW7i7hf5uO2cawSiK7JtSbDi444',
+        },
+        body: JSON.stringify({
+          query: `query GetBookByIsbn($isbn13: String!) {
+            book(where: {isbn13: $isbn13}) {
+              id
+              title
+              subtitle
+              description
+              pageCount
+              publishedDate
+              cover
+              authors {
+                name
+              }
+            }
+          }`,
+          variables: { isbn13: text }
+        })
+      })
+      .then(r => r.json())
+      .then(data => {
+        const book = data.data.book;
+        
+        // Populate the fields with the book data
+        bookTitle.textContent = book.title;
+        bookSubtitle.textContent = book.subtitle;
+        bookAuthors.textContent = `Author: ${book.authors.map(author => author.name).join(', ')}`;
+        bookPageCount.textContent = `Page Count: ${book.pageCount}`;
+        bookPublishedDate.textContent = `Published Date: ${new Date(book.publishedDate).toDateString()}`;
+        bookDescription.textContent = book.description;
+        bookCoverImg.src = book.cover;
+        
+        // Display the book container and the confirm button
+        bookContainer.style.display = 'block';
+        confirmButton.style.display = 'inline-block';
+        cancelButton.style.display = 'inline-block';
+        
+      })
+      .catch(error => {
+        alert('Error: ' + error.message);
+      });
+    });
+
+    confirmButton.addEventListener('click', () => {
+      confirmationMessage.style.display = 'block';
+      confirmButton.style.display = 'none';
+      cancelButton.style.display = 'none';
+      fetch('https://literal.club/graphql/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+          'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwcm9maWxlSWQiOiJjbHYwNnhtcTkxMjgzMzEwMGh3ZXJsODgydm1kIiwidHlwZSI6IkFDQ0VTU19UT0tFTiIsInRpbWVzdGFtcCI6MTcyOTA0ODA4MDIzMywiaWF0IjoxNzI5MDQ4MDgwLCJleHAiOjE3NDQ3NzI4ODB9.smTM3wtEVgEWwknwMW7i7hf5uO2cawSiK7JtSbDi444',
+        },
+        body: JSON.stringify({
+          mutation: `mutation updateReadingState(
+			  $bookId: String!
+			  $readingStatus: ReadingStatus!   # find fragments below
+			) {
+			  updateReadingState(
+				bookId: $bookId
+				readingStatus: $readingStatus
+			  ) {
+				status
+				profileId
+				book {
+				  id
+				  title
+				}
+			  }
+			}`,
+		variables { bookId: book.id, readingStatus: WANTS_TO_READ}
+      })
+      .then(r => r.json())
+      .then(data => {
+        const book = data.data.book;
+        
+        // Populate the fields with the book data
+        bookTitle.textContent = book.title;
+        bookSubtitle.textContent = book.subtitle;
+        bookAuthors.textContent = `Author: ${book.authors.map(author => author.name).join(', ')}`;
+        bookPageCount.textContent = `Page Count: ${book.pageCount}`;
+        bookPublishedDate.textContent = `Published Date: ${new Date(book.publishedDate).toDateString()}`;
+        bookDescription.textContent = book.description;
+        bookCoverImg.src = book.cover;
+        
+        // Display the book container and the confirm button
+        bookContainer.style.display = 'block';
+        confirmButton.style.display = 'inline-block';
+        cancelButton.style.display = 'inline-block';
+        
+      })
+      .catch(error => {
+        alert('Error: ' + error.message);
+      });
+    });
+    });
+    
+    cancelButton.addEventListener('click', () => {
+      cancelMessage.style.display = 'block';
+      cancelButton.style.display = 'none';
+      confirmButton.style.display = 'none';
+      bookContainer.style.display = 'none';
+    });
+  </script>
+
+</body>
+</html>

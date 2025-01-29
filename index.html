@@ -192,7 +192,9 @@
     </footer>
 
     <!-- Script for Sidebar, Tabs, Accordions, Progress bars and slideshows -->
-    <script>
+    <script type="module">
+    	import { voteStart, voteEnd, meetingTime } from './variables.js';
+
         // Side navigation
         function w3_open() {
           var x = document.getElementById("mySidebar");
@@ -205,9 +207,6 @@
           document.getElementById("mySidebar").style.display = "none";
         }
         
-        // check if voting is open
-		const voteStart = new Date('2025-01-20').getTime();
-		const voteEnd = new Date('2025-02-04').getTime();
 
 		const today = new Date().getTime();
 		const voteOpen = today > voteStart && today < voteEnd;

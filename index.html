@@ -195,20 +195,7 @@
     <script type="module">
     	import { voteStart, voteEnd, meetingTime } from './variables.js';
 
-        // Side navigation
-        function w3_open() {
-          var x = document.getElementById("mySidebar");
-          x.style.width = "70%";
-          x.style.fontSize = "30px";
-          x.style.paddingTop = "10%";
-          x.style.display = "block";
-        }
-        function w3_close() {
-          document.getElementById("mySidebar").style.display = "none";
-        }
-        
-
-		const today = new Date().getTime();
+    	const today = new Date().getTime();
 		const voteOpen = today > voteStart && today < voteEnd;
 
 
@@ -243,6 +230,19 @@
 		}
 
     </script>
+    
+    <script>
+    function w3_open() {
+  var x = document.getElementById("mySidebar");
+  x.style.width = "70%";
+  x.style.fontSize = "30px";
+  x.style.paddingTop = "10%";
+  x.style.display = "block";
+}
+function w3_close() {
+  document.getElementById("mySidebar").style.display = "none";
+}
+</script>
 
 
 

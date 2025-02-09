@@ -48,40 +48,52 @@ height:auto;
 
 <div class="w3-row-padding w3-center w3-margin-top">
 
-<div class="w3-container w3-card">
-  <h1>Time Left to Vote For Our Next Meeting</h1>
-  <p id="demo"></p>
+  <div class="w3-container w3-card">
+    <h1>Time Left to Vote For Our Next Meeting</h1>
+    <p id="demo"></p>
 
-  <script type="module">
-    import { voteStart, voteEnd, meetingDate } from './variables.js';
+    <script type="module">
+      import { voteStart, voteEnd, meetingDate } from './variables.js';
 
-    var x = setInterval(function () {
-      var now = new Date().getTime();
-      var distance = voteEnd - now;
+      document.addEventListener("DOMContentLoaded", function () {
+        console.log("voteEnd:", voteEnd);
+        console.log("Current time:", new Date().getTime());
 
-      if (isNaN(distance)) {
-        document.getElementById("demo").innerHTML = "Invalid date";
-        clearInterval(x);
-        return;
-      }
+        const voteEndDate = new Date(voteEnd);
+        if (isNaN(voteEndDate)) {
+          document.getElementById("demo").innerHTML = "Invalid date";
+          return;
+        }
 
-      var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        const x = setInterval(function () {
+          try {
+            const now = new Date().getTime();
+            const distance = voteEndDate.getTime() - now;
 
-      document.getElementById("demo").innerHTML =
-        days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+            if (distance < 0) {
+              clearInterval(x);
+              document.getElementById("demo").innerHTML = "EXPIRED";
+              return;
+            }
 
-      if (distance < 0) {
-        clearInterval(x);
-        document.getElementById("demo").innerHTML = "EXPIRED";
-      }
-    }, 1000);
-  </script>
-</div>
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-  
+            document.getElementById("demo").innerHTML =
+                    `${days}d ${hours}h ${minutes}m ${seconds}s`;
+          } catch (error) {
+            console.error("Error in countdown:", error);
+          }
+        }, 1000);
+      });
+    </script>
+  </div>
+
+
+
+
   <div class="w3-row-padding w3-center w3-margin-top">
   
 <!--  <div class="w3-container w3-card">
@@ -96,7 +108,7 @@ height:auto;
 <!-- <script type="text/javascript" src="https://form.jotform.com/jsform/242585751147159"></script></div> -->
 
 <script type="text/javascript" src="https://form.jotform.com/jsform/250315106507143"></script></div>
-
+</div>
 <br><br>
 <!-- Footer -->
 <footer class="w3-container w3-teal w3-center w3-padding-16">
@@ -119,7 +131,6 @@ function w3_close() {
 
 </script>
 
-<!-- comment to push -->
 </body>
 </html>
 

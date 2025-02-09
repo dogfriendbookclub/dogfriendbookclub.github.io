@@ -49,11 +49,11 @@ height:auto;
 <div class="w3-row-padding w3-center w3-margin-top">
 
   <div class="w3-container w3-card">
-    <h1>Time Left to Vote For Our Next Meeting</h1>
+    <h3>Time Left to Vote For Our Next Meeting</h3>
     <p id="demo"></p>
 
     <script type="module">
-      import { voteStart, voteEnd, meetingDate } from './variables.js?nocache=1';
+      import { voteStart, voteEnd, meetingTime } from './variables.js?nocache=1';
 
       document.addEventListener("DOMContentLoaded", function () {
         console.log("voteEnd:", voteEnd);
@@ -72,7 +72,7 @@ height:auto;
 
             if (distance < 0) {
               clearInterval(x);
-              document.getElementById("demo").innerHTML = "EXPIRED";
+              document.getElementById("demo").innerHTML = "Voting Has Ended";
               return;
             }
 

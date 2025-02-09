@@ -240,10 +240,11 @@
                 meetingPlaceElement.textContent = meetingPlace;
             }
 
-            // Update the iframe for the meeting place
-            const meetingPlaceIframeContainer = document.getElementById('meetingPlaceIframeContainer');
+            // Get the container for the iframe
+            const meetingPlaceIframeContainer = document.getElementById('meetingPlaceMap');
             if (meetingPlaceIframeContainer) {
-                meetingPlaceIframeContainer.innerHTML = meetingPlaceIframe; // Insert the full iframe HTML
+                // Insert the iframe code into the container
+                meetingPlaceIframeContainer.innerHTML = meetingPlaceIframe;
             }
 
             // update meeting name

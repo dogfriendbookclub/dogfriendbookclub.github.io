@@ -1,4 +1,4 @@
-import { voteStart, voteEnd, meetingDate } from './variables.js';
+// import { voteStart, voteEnd, meetingDate } from './variables.js';
 document.addEventListener("DOMContentLoaded", function() {
 fetch("https://literal.club/graphql/", {
   method: "POST",

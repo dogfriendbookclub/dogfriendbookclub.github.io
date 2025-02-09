@@ -48,13 +48,28 @@
             <h1 class="w3-xxlarge w3-animate-bottom">Dog Friend Book Club</h1>
         </div>
     </header>
+    
+    <script type="module">
+        import { resultsReportID } from './variables.js';
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const jotformEmbed = document.querySelector('.jotform-embed');
+            if (jotformEmbed) {
+                jotformEmbed.setAttribute('data-id', resultsReportID);
+                console.log("data-id updated to:", resultsReportID);
+            }
+        });
+    </script>
 
     <div class="w3-row-padding w3-center w3-margin-top">
         <div class="w3-card w3-container">
             <h3>Last Vote's Results</h3>
+            
+    <div class="jotform-embed" style="min-height: 1px;" data-id="" data-type="interactive" data-iframesource="www.jotform.com"></div>
+            
 
 
-            <iframe src="https://www.jotform.com/report/24265412026104222" width="100%" style="min-height:460px"></iframe>
+             <!--<iframe src="https://www.jotform.com/report/24265412026104222" width="100%" style="min-height:460px"></iframe>-->
             <br>
         </div>
     </div>

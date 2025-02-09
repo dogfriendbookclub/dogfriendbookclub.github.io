@@ -90,25 +90,14 @@ height:auto;
       });
     </script>
   </div>
+<br>
 
-
-
-
-  <div class="w3-row-padding w3-center w3-margin-top" id="votingForm">
-  
-<!--  <div class="w3-container w3-card">
-	<h3> Voting is different this month!</h3>
-	<p>We're going to read a collection of suggested short stories this month. Each person can suggest up to two stories and the page limit per story is 50 pages. 
-	Once we've collected all our stories, they'll be compiled into a document that will be sent out to the group to read. When you suggest a story please include the author and the title. 
-	If you have any other information about the story (like a link to where it can be read or the title of the book it was published in) please include the information in your suggestion. 
-	If you don't have that information, that's ok! Feel free to suggest with just a title and author.
-	 </div>
-  <div class="w3-row-padding w3-center w3-margin-top"> -->
-
-<!-- <script type="text/javascript" src="https://form.jotform.com/jsform/242585751147159"></script></div> -->
-
-<!-- <script type="text/javascript" src="https://form.jotform.com/jsform/250315106507143"></script></div> -->
+  <div class="w3-container w3-card">
+	<div id="votingForm">
+    <!-- voting form should appear here -->
 </div>
+  </div>
+  </div>
 <br><br>
 <!-- Footer -->
 <footer class="w3-container w3-teal w3-center w3-padding-16">
@@ -120,12 +109,26 @@ height:auto;
   import { currentScript } from './variables.js';
 
   document.addEventListener('DOMContentLoaded', () => {
-
-    // Get the container for the script
+    // Get the container for the voting form
     const votingFormContainer = document.getElementById('votingForm');
     if (votingFormContainer) {
-      // Insert the iframe code into the container
-      votingFormContainer.innerHTML = currentScript;
+      // Parse the currentScript string to extract the script src
+      const tempDiv = document.createElement('div');
+      tempDiv.innerHTML = currentScript.trim();
+      const scriptElement = tempDiv.querySelector('script');
+
+      if (scriptElement) {
+        // Create a new script element
+        const newScript = document.createElement('script');
+        newScript.type = scriptElement.type;
+        newScript.src = scriptElement.src;
+        newScript.async = scriptElement.async || false;
+
+        // Append the script element to the container
+        votingFormContainer.appendChild(newScript);
+      } else {
+        console.error("Invalid script content in currentScript");
+      }
     }
   });
 </script>

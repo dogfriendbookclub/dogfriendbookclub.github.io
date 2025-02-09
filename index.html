@@ -163,8 +163,8 @@
             <div class="w3-card w3-container" style="min-height:460px">
                 <h3>Add to Calendar</h3>
                 <br>
-                <p>Book Distro Meeting</p>
-                <p>Saturday, Feb 1st at 2:30PM<p>
+                <p id="meetingNameText">[Meeting Name Placeholder]</p>
+                <p id="meetingTimeText">[Placeholder for meeting time]<p>
                         <br>
 
 
@@ -231,7 +231,8 @@
     </script>
 
     <script type="module">
-        import { meetingPlace, meetingPlaceIframe, meetingTime } from './variables.js?nocache=1';
+        import { meetingPlace, meetingPlaceIframe, meetingTime } from './variables.js';
+        import {meetingName} from "./variables";
 
         document.addEventListener('DOMContentLoaded', () => {
             // Update the meeting place text
@@ -246,10 +247,22 @@
                 meetingPlaceIframeContainer.innerHTML = meetingPlaceIframe; // Insert the full iframe HTML
             }
 
+            // update meeting name
+            const meetingNameElement = document.getElementById('meetingNameText');
+            if (meetingNameElement) {
+                meetingNameElement.textContent = `${meetingName}`
+            }
+
             // Update the meeting time
             const meetingTimeElement = document.getElementById('meetingTimeText');
+            const options = {
+                weekday: "long",
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+            };
             if (meetingTimeElement) {
-                meetingTimeElement.textContent = `Meeting Date: ${meetingTime.toLocaleDateString()} at ${meetingTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}`;
+                meetingTimeElement.textContent = `${meetingTime.toLocaleDateString("en-US", options)} at ${meetingTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}`;
             }
         });
     </script>

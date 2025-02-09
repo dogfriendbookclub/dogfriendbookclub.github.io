@@ -1,7 +1,7 @@
 export const voteStart = new Date("2025-01-31");
 export const voteEnd = new Date("2025-02-09");
 export const meetingTime = new Date("Mar 1, 2025 13:00:00");
-export const currentFormID = "250315106507143"
+export const currentScript = `<script type="text/javascript" src="https://form.jotform.com/jsform/250315106507143"></script></div>`
 export const resultsReportID = "25039347178906509"
 export const meetingPlace = "Fox and Pantry in Plymouth"
 export const meetingPlaceIframe = `

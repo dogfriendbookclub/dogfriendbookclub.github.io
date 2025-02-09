@@ -150,16 +150,12 @@
             </div>
 
         <div class="w3-third">
-            <div class="w3-card w3-container" style="min-height:460px">
+            <div class="w3-card w3-container" id="meetingPlaceCard" style="min-height:460px">
                 <h3>Meeting Place</h3>
-
-                <p>Trove Brewing in Burnsville</p>
-                <p></p>
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2833.764455756202!2d-93.30392902376497!3d44.74482207107129!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x87f63babbf0cbd7d%3A0x29fbdec846b3aebb!2sTrove%20Brewing!5e0!3m2!1sen!2sus!4v1738018798753!5m2!1sen!2sus" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-
-                <br>
-                <p><p>
-
+                <p id="meetingPlaceText">[Placeholder for meeting place]</p>
+                <div id="meetingPlaceMap">
+                    <!-- This is where the iframe for the map will be inserted dynamically -->
+                </div>
             </div>
         </div>
 
@@ -233,7 +229,33 @@
 		}
 
     </script>
-    
+
+    <script type="module">
+        import { meetingPlace, meetingPlaceIframe, meetingTime } from './variables.js?nocache=1';
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Update the meeting place text
+            const meetingPlaceElement = document.getElementById('meetingPlaceText');
+            if (meetingPlaceElement) {
+                meetingPlaceElement.textContent = meetingPlace;
+            }
+
+            // Update the iframe for the meeting place
+            const meetingPlaceIframeContainer = document.getElementById('meetingPlaceIframeContainer');
+            if (meetingPlaceIframeContainer) {
+                meetingPlaceIframeContainer.innerHTML = meetingPlaceIframe; // Insert the full iframe HTML
+            }
+
+            // Update the meeting time
+            const meetingTimeElement = document.getElementById('meetingTimeText');
+            if (meetingTimeElement) {
+                meetingTimeElement.textContent = `Meeting Date: ${meetingTime.toLocaleDateString()} at ${meetingTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}`;
+            }
+        });
+    </script>
+
+
+
     <script>
     function w3_open() {
   var x = document.getElementById("mySidebar");

@@ -127,6 +127,19 @@ height:auto;
         }, 1000);
       });
     </script>
+
+    <script type="module">
+      import { currentFormID } from './variables.js?nocache=1';
+
+      document.addEventListener('DOMContentLoaded', () => {
+        const jotformEmbed = document.querySelector('.jotform-embed');
+        if (jotformEmbed) {
+          jotformEmbed.setAttribute('data-id', currentFormID);
+          console.log("data-id updated to:", currentFormID);
+        }
+      });
+    </script>
+
   </div>
     <br>
     <div class="w3-container w3-card">
@@ -150,29 +163,26 @@ height:auto;
 
 <!-- Script for Sidebar, Tabs, Accordions, Progress bars and slideshows -->
 <script type="module">
-  import { currentScript } from './variables.js';
+  import { currentFormID } from './variables.js?nocache=1';
 
   document.addEventListener('DOMContentLoaded', () => {
-    // Get the container for the voting form
     const votingFormContainer = document.getElementById('votingForm');
+
     if (votingFormContainer) {
-      // Parse the currentScript string to extract the script src
-      const tempDiv = document.createElement('div');
-      tempDiv.innerHTML = currentScript.trim();
-      const scriptElement = tempDiv.querySelector('script');
+      // Clear any existing content inside the container
+      votingFormContainer.innerHTML = "";
 
-      if (scriptElement) {
-        // Create a new script element
-        const newScript = document.createElement('script');
-        newScript.type = scriptElement.type;
-        newScript.src = scriptElement.src;
-        newScript.async = scriptElement.async || false;
+      // Create the script element
+      const jotformScript = document.createElement("script");
+      jotformScript.type = "text/javascript";
+      jotformScript.src = `https://form.jotform.com/jsform/${currentFormID}`;
 
-        // Append the script element to the container
-        votingFormContainer.appendChild(newScript);
-      } else {
-        console.error("Invalid script content in currentScript");
-      }
+      // Append the script to the voting form container
+      votingFormContainer.appendChild(jotformScript);
+
+      console.log("JotForm script injected:", jotformScript.src);
+    } else {
+      console.error("Voting form container not found");
     }
   });
 </script>

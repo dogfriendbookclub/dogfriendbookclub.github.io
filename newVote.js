@@ -58,7 +58,7 @@ fetch("https://literal.club/graphql/", {
       // Create a new accordion button for each book
       const newButton = document.createElement("button");
       newButton.classList.add("accordion");
-      newButton.textContent = book.title + " by " + `Author: ${book.authors.map(author => author.name).join(", ")}`;
+      newButton.textContent = book.title + " by " + `${book.authors.map(author => author.name).join(", ")}`;
 
       // Create the corresponding panel for each book
       const newDiv = document.createElement("div");

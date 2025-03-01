@@ -1,6 +1,6 @@
 export const voteStart = new Date("2025-02-22");
 export const voteEnd = new Date("2025-02-28");
-export const meetingTime = new Date("Mar 1, 2025 13:00:00");
+export const meetingTime = new Date("Mar 8, 2025 11:00:00");
 export const currentFormID = "250525153432145"
 export const resultsReportID = "25052514804304622"
 export const meetingPlace = "Fox and Pantry in Plymouth"
